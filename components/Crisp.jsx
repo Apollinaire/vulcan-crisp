@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { withCurrentUser, registerComponent, getSetting } from 'meteor/vulcan:core';
 
@@ -6,6 +7,11 @@ let isProd = Meteor.isProduction;
 
 function Crisp(props) {
   let crispIdSetting = getSetting('crispId');
+  //display a warning in the console when no setting is found.
+  if (typeof crispIdSetting != 'string') {
+    console.warn('crispIdSetting not found, please add it to you settings.json file');
+    return null;
+  };
   let { currentUser, currentUserLoading, showOnDebug } = props;
   if (typeof crispIdSetting === 'string' && (isProd || showOnDebug === true) && !currentUserLoading) {
     return (
@@ -27,6 +33,10 @@ function Crisp(props) {
       </Helmet>
     );
   } else return null;
+}
+
+Crisp.propTypes = {
+  showOnDebug: PropTypes.bool,
 }
 
 registerComponent('Crisp', Crisp, withCurrentUser);
