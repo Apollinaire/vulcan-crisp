@@ -44,7 +44,7 @@ To add the chatbox to your page, you can add the following code to the layout yo
 ```js
 import { Components } from 'meteor/vulcan:core';
 
-// inside you layout component
+// inside your layout component
 
 <Components.Crisp />
 

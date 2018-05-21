@@ -12,7 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.6.1');
-  api.use(['ecmascript','vulcan:core']);
+  api.use(['ecmascript','vulcan:core@1.9.1']);
   api.mainModule('client/main.js', 'client');
   api.mainModule('server/main.js', 'server');
 });
